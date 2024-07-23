@@ -91,27 +91,28 @@ export const LevelProvider = ({ children }) => {
   }
 
   async function fetchAllExercises(day, type, level) {
-    setElite(null)
-    const token = getTokenFromLocalStorage()
-    const params = {
-      day: day,
-      trainingSection: type,
-      skillLevel: level
-    }
-    setIsLoading(true)
     try {
-      await axios.get("https://legacy-backend-zmmd.onrender.com/training/allExercise",
-        {
+      setIsLoading(true); // Set isLoading state to true before making the request
+  
+      const token = getTokenFromLocalStorage();
+      const params = {
+        day: day,
+        trainingSection: type,
+        skillLevel: level
+      };
+  
+      const response = await axios.get("https://legacy-backend-zmmd.onrender.com/training/allExercise", {
         params: params,
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }).then((res) => {
-        setElite(res.data[0].trainingDescription)
-        setIsLoading(false)
       });
+  
+      setElite(response.data[0].trainingDescription);
     } catch (error) {
-      console.error(error, "Error fetching exercises");
+      console.error("Error fetching exercises:", error);
+    } finally {
+      setIsLoading(false);
     }
   }
 

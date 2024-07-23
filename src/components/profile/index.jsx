@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import styles from "../profile/settings.module.scss";
+import styles from "./styles.module.scss";
 import { VscAccount } from "react-icons/vsc";
 import notification from "../../../public/assets/Frame 10.svg";
 import admin from "../../../public/assets/Group 43.svg";
@@ -11,7 +11,7 @@ import simple from "../../../public/assets/PencilSimpleLine (1).svg";
 import Link from "next/link";
 import Layout from "@/components/layout/layout";
 
-export default function page() {
+const Profile = () => {
   return (
     <Layout>
       <section className={styles.Profile_Container}>
@@ -119,5 +119,7 @@ export default function page() {
         </div>
       </section>
     </Layout>
-  );
+  )
 }
+
+export default Profile
