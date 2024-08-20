@@ -157,7 +157,7 @@
             }
     
             ul{
-                display: none;
+                display: block;
                 align-items: center;
                 gap: 70px;
     
@@ -226,41 +226,70 @@
 }
 
 .Timmy_Head_Two{
-  // border: 2px solid red;
   width: 100%;
   display: flex;
   align-items: center;
   // justify-content: center;
   text-align: center;
-  gap: 15px;
+  gap: 10px;
   border-bottom: 1px solid rgb(165, 163, 163);
   padding: 20px 20px;
 
-  .Timmy_Head{
+  .timmy_wrapper{
+    width: 100%;
+    // padding: 25px 0px;
+
+    ul{
       display: flex;
       align-items: center;
-      gap: 10px;
-      // border: 2px solid green;
-      // width: 20%;
 
-      input[type="checkbox"] {
-          width: 2em;
-          height: 2rem;
-          accent-color: green;
-        }
+      li{
+
+        .Timmy_Head{
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          // width: 20%;
+    
+          input[type="checkbox"] {
+              width: 1.5em;
+              height: 1.5rem;
+              accent-color: green;
+            }
+      }
+      }
+    }
   }
+
+  // .Timmy_Head{
+  //     display: flex;
+  //     align-items: center;
+  //     gap: 10px;
+  //     // border: 2px solid green;
+  //     width: 15%;
+
+  //     input[type="checkbox"] {
+  //         width: 2em;
+  //         height: 2rem;
+  //         accent-color: green;
+  //       }
+  // }
+
 
 
   .Strech_One{
       width: 15%;
+      border: 2px solid yellow;
   }
 
   .Strech_Two{
       width: 18%;
+      border: 2px solid yellow;
   }
 
   .Strech_Three{
       width: 6%;
+      border: 2px solid yellow;
   }
 
   // .Strech_Four{
@@ -269,12 +298,12 @@
 
   .Strech_Five{
       width: 15%;
+      border: 2px solid yellow;
   }
 
 
   .Edit_Box{
       display: flex;
-      // border: 2px solid purple;
       gap: 40px;
       width: 20%;
 

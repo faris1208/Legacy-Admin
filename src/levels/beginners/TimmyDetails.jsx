@@ -20,7 +20,7 @@ const TimmyDetails = ({
   const [open, setOpen] = useState(false);
   return (
     <div className={styles.Timmy_Head_Two}>
-      <div className={styles.Timmy_Head}>
+      {/* <div className={styles.Timmy_Head}>
         <input type="checkbox" className={styles.Timmy_Input} />
         <Image
           src={imageProp}
@@ -29,9 +29,55 @@ const TimmyDetails = ({
           alt="timmy"
           className={styles.Timmy_Img}
         />
+      </div> */}
+      <div className={styles.timmy_wrapper}>
+        <ul>
+          <li>
+            <div className={styles.Timmy_Head}>
+              <input type="checkbox" className={styles.Timmy_Input} />
+              <Image
+                src={imageProp}
+                width={45}
+                height={45}
+                alt="timmy"
+                className={styles.Timmy_Img}
+              />
+            </div>
+          </li>
+          <li>
+            <p>{animationName}</p>
+          </li>
+          <li>
+            <p>{description}</p>
+          </li>
+          <li>
+            <p>{minute}:{seconds}</p>
+          </li>
+          <li>
+            <p>{animation}</p>
+          </li>
+          <li>
+            <div className={styles.Edit_Box}>
+              <Image
+                src={edit}
+                alt="edit"
+                width={20}
+                onClick={onEdit}
+                className={styles.Edit_Icon}
+              />
+              <Image
+                src={delet}
+                alt="delete"
+                width={20}
+                onClick={() => setOpen(true)}
+                className={styles.Edit_Icon}
+              />
+            </div>
+          </li>
+        </ul>
       </div>
 
-      <div className={styles.Strech_One}>
+      {/* <div className={styles.Strech_One}>
         <p>{animationName}</p>
       </div>
       <div className={styles.Strech_Two}>
@@ -61,7 +107,7 @@ const TimmyDetails = ({
           onClick={() => setOpen(true)}
           className={styles.Edit_Icon}
         />
-      </div>
+      </div> */}
       <Modal isOpen={open} onClose={() => setOpen(false)}>
         <div className={styles.Delete_Modal}>
           <Image src={del} alt="modal" width={100} />

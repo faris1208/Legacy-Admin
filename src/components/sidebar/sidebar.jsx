@@ -15,10 +15,6 @@ import Modal from "../modal/modal";
 export default function Sidebar() {
   const { isActive, toggleMenu, logout, active, activeLevel, fetchAllExercises } = useContext(LevelContext);
   const [open, setOpen] = useState(false);
-
-
-  
-
   
 
   return (

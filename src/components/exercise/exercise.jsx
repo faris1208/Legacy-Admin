@@ -79,3 +79,4 @@ export default function Exercise({ level, day }) {
     </section>
   );
 }
+
