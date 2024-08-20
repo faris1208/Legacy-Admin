@@ -9,11 +9,11 @@ import arrowred from "../../../public/assets/Group 3264.svg";
 import Timmy from "../../../public/assets/Timmy Action pose 4 with background 2.svg";
 import Timmytwo from "../../../public/assets/Timmy Action pose 5 with background 2.svg";
 import Timmythree from "../../../public/assets/Frame 11795.svg";
-// import './styles//globals.scss';
+import Layout from "../layout/layout";
 
 export default function Dashboard() {
   return (
-  <>
+  <Layout>
     <main className={styles.main}>
       <div className={styles.Bacground_ball}></div>
       <div className={styles.Dashboard_Wrapper}>
@@ -173,6 +173,6 @@ export default function Dashboard() {
         </div>
       </section>
     </main>
-    </>
+    </Layout>
   )
 }

@@ -231,7 +231,7 @@
   align-items: center;
   // justify-content: center;
   text-align: center;
-  gap: 10px;
+  gap: 50px;
   border-bottom: 1px solid rgb(165, 163, 163);
   padding: 20px 20px;
 
@@ -278,7 +278,7 @@
   .Edit_Box{
       display: flex;
       gap: 40px;
-      width: 20%;
+      // width: 20%;
 
       .Edit_Icon{
           cursor: pointer;

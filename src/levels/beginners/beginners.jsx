@@ -32,29 +32,31 @@ export default function Beginners({ id }) {
           />
         </div>
         <div className={styles.cat_container}>
-          <div className={styles.selected_option1}>{filterType}</div>
+          {filterType == "exercise" && <div className={styles.selected_option1}>Exercise</div>}
+          {filterType == "drills" && <div className={styles.selected_option1}>Drills</div>}
+          {filterType == "moves" && <div className={styles.selected_option1}>Moves</div>}
         </div>
         <p className={styles.Day_One}>Day {id}</p>
-        {filterType === "Exercise" && (
+        {filterType === "exercise" && (
           <Exercise
             day={id}
-            level="beginners"
+            level="Beginner"
             activity={activity}
             setActivity={setActivity}
           />
         )}
-        {filterType === "Moves" && (
+        {filterType === "moves" && (
           <Moves
             day={id}
-            level="beginners"
+            level="Beginner"
             activity={activity}
             setActivity={setActivity}
           />
         )}
-        {filterType === "Drills" && (
+        {filterType === "drills" && (
           <Drills
             day={id}
-            level="beginners"
+            level="Beginner"
             activity={activity}
             setActivity={setActivity}
           />

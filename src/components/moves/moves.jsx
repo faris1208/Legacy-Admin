@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Image from "next/image";
 import styles from "./moves.module.scss";
 import Timmy from "/public/assets/Timmysmall.svg";
@@ -8,11 +8,28 @@ import { useState } from "react";
 import Activity from "@/components/activity/activity";
 import TimmyDetails from "@/levels/beginners/TimmyDetails";
 import LevelContext from "@/context/LevelContext";
+import Spinner from "../spinner";
 
-export default function Moves({level, day}) {
-  const { admin, updateDayItem, deleteDayItem, editItem, setEditItem, activity, setActivity } = useContext(LevelContext);
+export default function Moves({ level, day }) {
+  const {
+    elite,
+    updateDayItem,
+    deleteDayItem,
+    editItem,
+    setEditItem,
+    activity,
+    setActivity,
+    fetchAllExercises,
+    deleteActivity,
+  } = useContext(LevelContext);
+
+  useEffect(() => {
+    setActivity(false);
+    fetchAllExercises(day, "moves", level);
+  }, []);
 
   const addNewField = () => {
+    setEditItem("");
     setActivity(true);
   };
 
@@ -21,8 +38,14 @@ export default function Moves({level, day}) {
     setActivity(true);
   };
 
+  const deleteExercise = async (id) => {
+    await deleteActivity(id);
+    fetchAllExercises(day, "exercise", level);
+  };
+
   return (
     <section className={styles.Beginners_Container}>
+      <Spinner />
       {!activity && (
         <div>
           <section className={styles.Activity_Container}>
@@ -32,28 +55,29 @@ export default function Moves({level, day}) {
                 <li>Activity Name</li>
                 <li>Description</li>
                 <li>Duration</li>
-                <li>Day</li>
-                <li>Animation URL</li>
+                <li>Animation Video URL</li>
               </ul>
             </div>
             <div className={styles.Activty_Container}>
               <div className={styles.Activty_Form}>
-                {admin[level]['moves'][day].length === 0 && <div className={styles.No_Activities}>No Activites Yet</div>}
-                {admin[level]['moves'][day].map((timmy) => (
-                  <div key={timmy.id}>
+                {elite?.length == 0 && (
+                  <div className={styles.No_Activities}>No Activites Yet</div>
+                )}
+                {elite?.map((timmy) => (
+                  <div key={timmy._id}>
                     <TimmyDetails
                       imageProp={Timmy}
-                      animationName={timmy.anime_name}
-                      animation={timmy.anime_image_url}
+                      animationName={timmy.displayName}
+                      animationImg={timmy.imgUrl}
+                      animationVid={timmy.videoUrl}
                       description={timmy.description}
-                      minute={timmy.minute}
-                      seconds={timmy.seconds}
-                      onDelete={() => deleteDayItem(level, 'moves', day, timmy.id)}
+                      minute={timmy.duration.minutes}
+                      seconds={timmy.duration.seconds}
+                      onDelete={() => deleteExercise(timmy._id)}
                       onEdit={() => handleEdit(timmy)}
                     />
                   </div>
                 ))}
-
                 <div onClick={addNewField} className={styles.Plus_Wrapper}>
                   <div className={styles.Plus}>
                     <Image src={plus} alt="plus" width={30} height={30} />
@@ -65,13 +89,7 @@ export default function Moves({level, day}) {
           </section>
         </div>
       )}
-      {activity && (
-        <Activity
-        type='moves'
-        day={day}
-        level={level}
-      />
-      )}
+      {activity && <Activity type="Moves" day={day} level={level} />}
     </section>
   );
 }

@@ -13,14 +13,14 @@ import LevelContext from "@/context/LevelContext";
 import Modal from "../modal/modal";
 
 export default function Sidebar() {
-  const { isActive, toggleMenu, logout, active, activeLevel, fetchAllExercises } = useContext(LevelContext);
+  const { isActive, toggleMenu, logout, active, activeLevel } = useContext(LevelContext);
   const [open, setOpen] = useState(false);
   
 
   return (
     <div className={styles.sidebar_new}>
       <section className={styles.sidebar_section}>
-        <div onClick={fetchAllExercises} className={styles.Logo_icon}>
+        <div className={styles.Logo_icon}>
           <Image src={card1} width={150} height={100} alt="card" />
         </div>
         <div>

@@ -6,7 +6,7 @@ import LevelContext from "@/context/LevelContext"
 import Layout from "@/components/layout/layout";
 
 export default function Level({ level }) {
-  const { filterType, setFilterType } = useContext(LevelContext);
+  const { filterType, setFilterType, fetchAllExercises } = useContext(LevelContext);
 
   const days = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
@@ -31,6 +31,10 @@ export default function Level({ level }) {
     },
   ];
 
+  const getThem =(day) => {
+    fetchAllExercises(day, filterType, level)
+  }
+
   const handleFilterChange = (type) => {
     setFilterType(type);
   };
@@ -42,9 +46,9 @@ export default function Level({ level }) {
         {more.map((item) => (
           <div
             key={item.id}
-            onClick={() => handleFilterChange(item.gg)}
+            onClick={() => handleFilterChange(item.value)}
             className={
-              filterType === item.gg
+              filterType === item.value
                 ? styles.selected_option1
                 : styles.selected_option
             }>

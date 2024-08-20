@@ -8,6 +8,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import LevelContext from "@/context/LevelContext";
+import Spinner from "@/components/spinner";
 
 export default function Login() {
   const { loginAdmin } = useContext(LevelContext);
@@ -43,6 +44,7 @@ export default function Login() {
 
   return (
     <div className={styles.container}>
+      <Spinner />
       <div className={styles.log_container}>
         <div className={styles.log_wrapper}>
           <div className={styles.legacy}>
